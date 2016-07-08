@@ -4,7 +4,7 @@ namespace Pyncil\SEO\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class SEOGenerator extends Facade
+class SEOFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
