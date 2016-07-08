@@ -45,16 +45,16 @@ TODO
 
 The MIT License (MIT). Please see [License File][link-license] for more information.
 
-[ico-stable]: https://poser.pugx.org/pyncil/seo/v/stable
-[ico-unstable]: https://poser.pugx.org/pyncil/seo/v/unstable
-[ico-downloads]: https://poser.pugx.org/pyncil/seo/downloads
-[ico-license]: https://poser.pugx.org/pyncil/seo/license
-[ico-scrutinizer]: https://scrutinizer-ci.com/g/Pyncil/SEO/badges/quality-score.png?b=master
-[ico-build]: https://travis-ci.org/Pyncil/SEO.svg?branch=master
+[ico-stable]: https://img.shields.io/packagist/v/pyncil/seo.svg?style=flat-square
+[ico-unstable]: https://img.shields.io/packagist/vpre/pyncil/seo.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/pyncil/seo.svg?style=flat-square
+[ico-license]: https://img.shields.io/github/license/pyncil/seo.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/g/Pyncil/SEO.svg?style=flat-square
+[ico-build]: https://img.shields.io/travis/Pyncil/SEO.svg?style=flat-square
 
 [link-travis]: https://travis-ci.org/Pyncil/SEO
-[link-packagist]: https://packagist.org/packages/pyncil/seo
 [link-scrutinizer]: https://scrutinizer-ci.com/g/Pyncil/SEO
+[link-packagist]: https://packagist.org/packages/pyncil/seo
 [link-license]: ./LICENSE
 [link-author]: https://github.com/Pyncil
 [link-contributors]: ../../contributors
