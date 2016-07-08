@@ -1,15 +1,9 @@
-language: php
+language: php 
 php:
-  - 5.5
-  - 5.6
-  - 7.0
-  - hhvm
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: hhvm
-before_script:
-  - travis_retry composer install --prefer-source --no-interaction
-script:
-  - mkdir -p build/logs
-  - vendor/bin/phpunit --coverage-text
+  - 5.5 
+  - 5.6 
+  - 7.0 
+  - hhvm 
+sudo: false
+install: travis_retry composer install --no-interaction --prefer-source 
+script: vendor/bin/phpunit
