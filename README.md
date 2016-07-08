@@ -50,7 +50,7 @@ The MIT License (MIT). Please see [License File][link-license] for more informat
 [ico-downloads]: https://poser.pugx.org/pyncil/seo/downloads
 [ico-license]: https://poser.pugx.org/pyncil/seo/license
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/Pyncil/SEO/badges/quality-score.png?b=master
-[ico-build]: https://travis-ci.org/Pyncil/SEO.svg
+[ico-build]: https://travis-ci.org/Pyncil/SEO.svg?branch=master
 
 [link-travis]: https://travis-ci.org/Pyncil/SEO
 [link-packagist]: https://packagist.org/packages/pyncil/seo

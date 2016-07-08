@@ -23,7 +23,7 @@ class SEOGenerator implements SEOContract
     /**
      * The title separator.
      *
-     * @var array
+     * @var string
      */
     protected $title_separator;
 
@@ -139,8 +139,6 @@ class SEOGenerator implements SEOContract
      * Sets the separator for the title tag.
      *
      * @param string $separator
-     *
-     * @return MetaTagsContract
      */
     public function setTitleSeparator($separator)
     {
