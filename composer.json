@@ -1,0 +1,39 @@
+{
+  "name": "pyncil/seo",
+  "description": "Ultimate SEO creation for Laravel 5",
+  "keywords": ["laravel", "5", "seo", "pyncil", "metatags", "opengraph", "twitter", "sitemap"],
+  "homepage": "https://github.com/Pyncil/SEO",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jake Mitchell",
+      "email": "jake@jmitchell.co",
+      "homepage": "http://jmitchell.co",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "~5.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "orchestra/testbench": "~3.0",
+    "mockery/mockery": "^0.9.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pyncil\\SEO\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Pyncil\\SEO\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
