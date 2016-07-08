@@ -1,4 +1,0 @@
-TAP version 13
-ok 1 - Pyncil\SEO\Tests\SEOGeneratorTest::test_it_returns_true
-ok 2 - Pyncil\SEO\Tests\SEOServiceProviderTest::test_container_are_provided with data set #0 ('Pyncil\SEO\Contracts\SEOGenerator', 'Pyncil\SEO\SEOGenerator')
-1..2
