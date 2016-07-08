@@ -38,8 +38,6 @@ interface SEOGenerator
      * Sets the separator for the title tag.
      *
      * @param string $separator
-     *
-     * @return MetaTagsContract
      */
     public function setTitleSeparator($separator);
 
