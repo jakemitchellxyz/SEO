@@ -28,11 +28,11 @@ interface SEOGenerator
     public function setTitle($title);
 
     /**
-     * Sets the title subline.
+     * Sets the title subtitle.
      *
-     * @param string $subline
+     * @param string $subtitle
      */
-    public function setTitleSubline($subline);
+    public function setSubtitle($subtitle);
 
     /**
      * Sets the separator for the title tag.
@@ -91,6 +91,13 @@ interface SEOGenerator
     public function setRobots($robots = 'index,follow');
 
     /**
+     * Sets the viewport for mobile.
+     *
+     * @param string $viewport
+     */
+    public function setViewport($viewport = 'width=device-width, initial-scale=1');
+
+    /**
      * Sets the previous URL (for pagination).
      *
      * @param string $url
@@ -121,18 +128,18 @@ interface SEOGenerator
     public function removeMeta($key);
 
     /**
-     * Gets the title and subline if necessary.
+     * Gets the title and subtitle if necessary.
      *
      * @return string
      */
     public function getTitle();
 
     /**
-     * Gets the title subline.
+     * Gets the title subtitle.
      *
      * @return string
      */
-    public function getTitleSubline();
+    public function getSubtitle();
 
     /**
      * Gets the title separator.
@@ -170,6 +177,13 @@ interface SEOGenerator
     public function getRobots();
 
     /**
+     * Gets the viewport.
+     *
+     * @return string
+     */
+    public function getViewport();
+
+    /**
      * Gets the prev URL.
      *
      * @return string
@@ -188,6 +202,6 @@ interface SEOGenerator
      *
      * @return string
      */
-    public function getMetatags();
+    public function getMeta();
 
 }

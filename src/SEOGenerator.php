@@ -14,11 +14,11 @@ class SEOGenerator implements SEOContract
     protected $title;
 
     /**
-     * The title subline.
+     * The title subtitle.
      *
      * @var string
      */
-    protected $title_subline;
+    protected $title_subtitle;
 
     /**
      * The title separator.
@@ -54,6 +54,13 @@ class SEOGenerator implements SEOContract
      * @var string
      */
     protected $robots;
+
+    /**
+     * Viewport for mobile.
+     *
+     * @var string
+     */
+    protected $viewport;
 
     /**
      * The previous URL in pagination.
@@ -103,9 +110,10 @@ class SEOGenerator implements SEOContract
             $this->getKeywords(), // keywords
             $this->getCanonical(), // canonical URL
             $this->getRobots(), // robots
+            $this->getViewport(), // viewport for mobile
             $this->getPrev(), // previous URL
             $this->getNext(), // next URL
-            $this->getMetatags(), // additional meta tags
+            $this->getMeta(), // additional meta tags
         ];
 
         return implode(PHP_EOL, $tags);
@@ -124,13 +132,13 @@ class SEOGenerator implements SEOContract
     }
 
     /**
-     * Sets the title subline.
+     * Sets the title subtitle.
      *
-     * @param string $subline
+     * @param string $subtitle
      */
-    public function setTitleSubline($subline)
+    public function setSubtitle($subtitle)
     {
-        $this->title_subline = strip_tags($subline);
+        $this->title_subtitle = strip_tags($subtitle);
 
         return $this;
     }
@@ -166,7 +174,7 @@ class SEOGenerator implements SEOContract
      */
     public function addKeyword($keyword)
     {
-        $this->keywords[] = strip_tags($keyword);
+        array_push($this->keywords, strip_tags($keyword));
 
         return $this;
     }
@@ -238,6 +246,18 @@ class SEOGenerator implements SEOContract
 
         return $this;
     }
+    
+    /**
+     * Sets the viewport for mobile.
+     *
+     * @param string $viewport
+     */
+    public function setViewport($viewport = 'width=device-width, initial-scale=1')
+    {
+        $this->viewport = $viewport;
+
+        return $this;
+    }
 
     /**
      * Sets the previous URL (for pagination).
@@ -296,23 +316,23 @@ class SEOGenerator implements SEOContract
     }
 
     /**
-     * Gets the title and subline if necessary.
+     * Gets the title and subtitle if necessary.
      *
      * @return string
      */
     public function getTitle()
     {
-        return "<title>" . ($this->title ?: '') . $this->getTitleSubline() . "</title>";
+        return "<title>" . ($this->title ?: '') . $this->getSubtitle() . "</title>";
     }
 
     /**
-     * Gets the title subline.
+     * Gets the title subtitle.
      *
      * @return string
      */
-    public function getTitleSubline()
+    public function getSubtitle()
     {
-        return !empty($this->title_subline) ? $this->title_subline . $this->getTitleSeparator() : '';
+        return !empty($this->title_subtitle) ? $this->getTitleSeparator() . $this->title_subtitle : '';
     }
     
     /**
@@ -332,7 +352,7 @@ class SEOGenerator implements SEOContract
      */
     public function getDescription()
     {
-        return "<meta name=\"description\" content=\"" . $this->description . "\">";
+        return "<meta name=\"description\" content=\"" . ($this->description ?: '') . "\">";
     }
 
     /**
@@ -366,6 +386,16 @@ class SEOGenerator implements SEOContract
     }
 
     /**
+     * Gets the viewport.
+     *
+     * @return string
+     */
+    public function getViewport()
+    {
+        return !empty($this->viewport) ? "<meta name=\"viewport\" content=\"" . $this->viewport . "\">" : '';
+    }
+
+    /**
      * Gets the prev URL.
      *
      * @return string
@@ -390,7 +420,7 @@ class SEOGenerator implements SEOContract
      *
      * @return string
      */
-    public function getMetatags()
+    public function getMeta()
     {
         $metatags = [];
 
@@ -403,7 +433,7 @@ class SEOGenerator implements SEOContract
                 continue;
             }
 
-            $metatags[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
+            array_push($metatags, "<meta {$name}=\"{$key}\" content=\"{$content}\">");
         }
 
         return implode(PHP_EOL, $metatags);
