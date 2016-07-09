@@ -21,6 +21,30 @@ class SEOGeneratorTest extends BaseTest
         $this->seo = $this->app->make('seo');
     }
     
+    public function test_getter()
+    {
+        $this->assertEquals($this->seo->get(), "<title></title><meta name=\"description\" content=\"\">");
+        $this->assertEquals($this->seo->get(false), "<title></title>".PHP_EOL."<meta name=\"description\" content=\"\">");
+        
+        $this->seo->setTitle('Page Title');
+        $this->seo->setSubtitle('Subtitle');
+        $expectTitle = "<title>Page Title &#8211; Subtitle</title>";
+        
+        $this->seo->setDescription('Hello, World!');
+        $expectDescription = "<meta name=\"description\" content=\"Hello, World!\">";
+        
+        $this->seo->setKeywords(['hello', 'world', 'pyncil', 'seo']);
+        $expectKeywords = "<meta name=\"keywords\" content=\"hello, world, pyncil, seo\">";
+        
+        $this->seo->setCanonical();
+        $expectCanonical = "<link rel=\"canonical\" href=\"http://localhost\"/>";
+        
+        $this->seo->setRobots();
+        $expectRobots = "<meta name=\"robots\" content=\"index,follow\">";
+        
+        $this->assertEquals($this->seo->get(), $expectTitle.$expectDescription.$expectKeywords.$expectCanonical.$expectRobots);
+    }
+    
     public function test_title()
     {
         $this->assertEquals($this->seo->getTitle(), "<title></title>");
@@ -69,6 +93,9 @@ class SEOGeneratorTest extends BaseTest
     
     public function test_canonical()
     {
+        $this->assertEquals($this->seo->getCanonical(), "");
+        
+        $this->seo->setCanonical();
         $this->assertEquals($this->seo->getCanonical(), "<link rel=\"canonical\" href=\"http://localhost\"/>");
         
         $this->seo->setCanonical('http://totallyfakelol.com/srsly');

@@ -90,9 +90,9 @@ class SEOGenerator implements SEOContract
      * 
      * @return string
      */
-    public function generate($minify = true)
+    public function get($minify = true)
     {
-        $html = $this->generateTags();
+        $html = $this->generateMeta();
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }
@@ -102,7 +102,7 @@ class SEOGenerator implements SEOContract
      *
      * @return string
      */
-    public function generateTags()
+    public function generateMeta()
     {
         $tags = [
             $this->getTitle(), // title
@@ -116,7 +116,7 @@ class SEOGenerator implements SEOContract
             $this->getMeta(), // additional meta tags
         ];
 
-        return implode(PHP_EOL, $tags);
+        return implode(PHP_EOL, array_filter($tags));
     }
 
     /**
@@ -228,9 +228,9 @@ class SEOGenerator implements SEOContract
      *
      * @param string $url
      */
-    public function setCanonical($url)
+    public function setCanonical($url = '')
     {
-        $this->canonical = $url;
+        $this->canonical = $url ?: app('url')->current();
 
         return $this;
     }
@@ -287,17 +287,17 @@ class SEOGenerator implements SEOContract
      * Add a custom meta tag(s).
      *
      * @param string|array $meta
-     * @param string       $value
+     * @param string       $content
      * @param string       $name
      */
-    public function addMeta($meta, $value = null, $name = 'name')
+    public function addMeta($meta, $content = null, $name = 'name')
     {
         if (is_array($meta)) {
             foreach ($meta as $key => $value) {
                 $this->metatags[$key] = [$name, $value];
             }
         } else {
-            $this->metatags[$meta] = [$name, $value];
+            $this->metatags[$meta] = [$name, $content];
         }
 
         return $this;
@@ -372,7 +372,7 @@ class SEOGenerator implements SEOContract
      */
     public function getCanonical()
     {
-        return "<link rel=\"canonical\" href=\"" . ($this->canonical ?: app('url')->current()) . "\"/>";
+        return !empty($this->canonical) ? "<link rel=\"canonical\" href=\"" . $this->canonical . "\"/>" : "";
     }
     
     /**

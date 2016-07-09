@@ -11,14 +11,14 @@ interface SEOGenerator
      * 
      * @return string
      */
-    public function generate($minify = true);
+    public function get($minify = true);
 
     /**
      * Generates meta tags.
      *
      * @return string
      */
-    public function generateTags();
+    public function generateMeta();
 
     /**
      * Sets the title.
@@ -81,7 +81,7 @@ interface SEOGenerator
      *
      * @param string $url
      */
-    public function setCanonical($url);
+    public function setCanonical($url = '');
 
     /**
      * Sets robots.
@@ -115,10 +115,10 @@ interface SEOGenerator
      * Add a custom meta tag(s).
      *
      * @param string|array $meta
-     * @param string       $value
+     * @param string       $content
      * @param string       $name
      */
-    public function addMeta($meta, $value = null, $name = 'name');
+    public function addMeta($meta, $content = null, $name = 'name');
 
     /**
      * Remove a meta tag.
