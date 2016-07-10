@@ -183,7 +183,7 @@ class Favicons implements FaviconsContract
     /**
      * Gets the favicon directory.
      *
-     * @return array
+     * @return string
      */
     public function getDir()
     {
