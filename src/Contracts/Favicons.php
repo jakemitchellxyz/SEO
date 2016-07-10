@@ -47,8 +47,6 @@ interface Favicons
     /**
      * Generate favicon HTML based on existing images.
      *
-     * @param string $dir Directory the favicons exist in
-     *
      * @return string
      */
     public function get();

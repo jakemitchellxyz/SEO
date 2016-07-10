@@ -10,7 +10,7 @@ class Favicons implements FaviconsContract
     /**
      * Directory favicons are stored.
      *
-     * @var array
+     * @var string
      */
     protected $dir;
 
@@ -123,8 +123,6 @@ class Favicons implements FaviconsContract
 
     /**
      * Generate favicon HTML based on existing images.
-     *
-     * @param string $dir Directory the favicons exist in
      *
      * @return string
      */
