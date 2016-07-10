@@ -24,7 +24,7 @@ class SEOGeneratorTest extends BaseTest
     public function test_getter()
     {
         $this->assertEquals($this->seo->get(), "<title></title><meta name=\"description\" content=\"\">");
-        $this->assertEquals($this->seo->get(false), "<title></title>".PHP_EOL."<meta name=\"description\" content=\"\">");
+        $this->assertEquals($this->seo->get(false), "<title></title>".PHP_EOL."<meta name=\"description\" content=\"\">".PHP_EOL);
         
         $this->seo->setTitle('Page Title');
         $this->seo->setSubtitle('Subtitle');

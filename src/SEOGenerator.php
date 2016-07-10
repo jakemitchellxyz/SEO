@@ -82,6 +82,16 @@ class SEOGenerator implements SEOContract
      * @var array
      */
     protected $metatags = [];
+    
+    /**
+     * Get instance of favicons.
+     *
+     * @return \Pyncil\SEO\Contracts\Favicons
+     */
+    public function favicons()
+    {
+        return app('seo.favicons');
+    }
 
     /**
      * Generate from all seo providers.
@@ -92,7 +102,9 @@ class SEOGenerator implements SEOContract
      */
     public function get($minify = true)
     {
-        $html = $this->generateMeta();
+        $html  = $this->generateMeta();
+        $html .= PHP_EOL;
+        $html .= $this->favicons()->get();
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }

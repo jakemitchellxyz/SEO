@@ -33,6 +33,10 @@ class SEOServiceProviderTest extends BaseTest
                 'Pyncil\SEO\Contracts\SEOGenerator',
                 'Pyncil\SEO\SEOGenerator',
             ],
+            [
+                'Pyncil\SEO\Contracts\Favicons',
+                'Pyncil\SEO\Favicons',
+            ],
         ];
     }
 }

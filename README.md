@@ -27,6 +27,8 @@ Add the following provider and alias to `config/app.php`
 
 'aliases' => [
     'SEO' => Pyncil\SEO\Facades\SEOFacade::class,
+    // optional facades:
+    'Favicons' => Pyncil\SEO\Facades\FaviconsFacade::class,
 ]
 ```
 
@@ -131,6 +133,54 @@ Adding custom tags is a cinch! Simply declare the name and content like so:
 | `SEO::addMeta('refresh', 300, 'http-equiv')` | `<meta http-equiv="refresh" content="300">` |
 | `SEO::addMeta('UTF-8', null, 'charset')` | `<meta charset="UTF-8">` |
 | `SEO::addMeta(['author' => 'Billy', 'copyright' => 'PotatoFace'])` | `<meta name="author" content="Billy"> <meta name="copyright" content="PotatoFace">` |
+
+## Favicons
+
+Many different browsers, computers, and operating systems like to retrieve a page's favicon in their own, creative ways. Stupid, I know.
+But, nevertheless, we must dance like the monkeys we are. So instead of creating 50 different favicons and link tags, just head on over to the [Real Favicon Generator](http://realfavicongenerator.net/) and download all of your new favicons.
+
+Then, put them all in the folder of your choice.
+
+*DO NOT RENAME FILES*
+
+Once you do that, you can declare that you want favicons by calling:
+``` php
+SEO::favicons()->set('folder/containing/icons');
+```
+*Note*: the url you pass must be relative to the `public` directory.
+
+then we can get your link tags dynamically like this:
+``` html
+<head>
+    {!! SEO::favicons()->get() !!}
+</head>
+```
+And that's it!
+
+The generator will only generate tags corresponding with existing files. If you don't want the tag, don't include the file.
+*Note*: other items CAN exist in the icons folder. It is reccommended to put the icons in the `/public` directory.
+
+#### Advanced Setup
+
+Let's say you want to customize the icon sizes on Android or iPhone. Or maybe the tile color in Windows 8 or 10. The following functions allow you to make those custom changes:
+
+These sizes each take an array variable. Each string in the array must be in format "144x144" and corresponds with a file by that size.
+
+| Funcion | Description |
+| --- | --- |
+| `setSizes($sizes)` | Sets general `'favicon-'` sizes |
+| `setAppleSizes($sizes)` | Sizes for `'apple-touch-'` icons |
+| `setAndroidSizes($sizes)` | Sizes for `'android-chrome-'` icons |
+
+To set custom colors, use `setColors($colors)`. It takes an array of colors in this format:
+``` php
+$colors = [
+    'safari_pinned' => '#000000',
+    'ms_tile' => '#000000',
+    'theme' => '#000000'
+];
+```
+those three color names are the only colors you may set. Colors must be in hex and none of them are required.
 
 ## Credits
 
