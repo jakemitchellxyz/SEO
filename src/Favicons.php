@@ -60,13 +60,7 @@ class Favicons implements FaviconsContract
      */
     public function set($url = '/')
     {
-        if (ends_with($url, '/')) {
-            $this->dir = $url;
-        } else {
-            $this->dir = $url . '/';
-        }
-
-        $this->dir = $url . (!ends_with($url, '/') ? '/' : '');
+        $this->dir = str_finish($url, '/');
 
         return $this;
     }
