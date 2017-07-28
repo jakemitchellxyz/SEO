@@ -3,6 +3,8 @@
 namespace Pyncil\SEO\Providers;
 
 use Pyncil\SEO\Contracts;
+use Pyncil\SEO\Facades\FaviconsFacade;
+use Pyncil\SEO\Facades\SEOFacade;
 use Pyncil\SEO\SEOGenerator;
 use Pyncil\SEO\Favicons;
 
@@ -49,5 +51,17 @@ class SEOServiceProvider extends ServiceProvider
             'seo',
             'seo.favicons',
         ];
+    }
+
+    /**
+     * Register the provider services.
+     * 
+     * @return void
+     */
+    public function boot(){
+        // alias the SEO and Favicon facades
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('SEO', SEOFacade::class);
+        $loader->alias('Favicons', FaviconsFacade::class);
     }
 }
