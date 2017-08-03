@@ -18,17 +18,11 @@ $ composer require pyncil/seo
 
 ###Update the Laravel Framework
 
-Add the following provider and alias to `config/app.php`
+Add the following provider to `config/app.php`
 
 ``` php
 'providers' => [
     Pyncil\SEO\Providers\SEOServiceProvider::class
-],
-
-'aliases' => [
-    'SEO' => Pyncil\SEO\Facades\SEOFacade::class,
-    // optional facades:
-    'Favicons' => Pyncil\SEO\Facades\FaviconsFacade::class,
 ]
 ```
 
